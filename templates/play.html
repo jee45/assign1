@@ -5,6 +5,20 @@
     <title>Title</title>
 </head>
 <body>
+    <h1>{{ title }}</h1>
+    <h3>{{ date}}</h3>
 
+    <ul> characters:
+    {% for charater in characters %}
+        <li>{{ charater }}</li>
+    {% endfor %}
+    </ul>
+
+{{ id }}
+    <ul> acts:
+        {% for act in acts %}
+        <li><a href="/plays/{{ id }}/">{{ act }}</a></li>
+    {% endfor %}
+    </ul>
 </body>
 </html>

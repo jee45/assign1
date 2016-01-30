@@ -8,9 +8,10 @@
     ‘Plays of Shakespeare’
 
     <ul>
-        {% for play in plays|sort(attribute='date')%}
+        {% for play in plays|sort(attribute='date') %}
             <li>
-                <a href="/plays/{{ plays[play]['id'] }}/">{{ plays[play]['full_title'] }}</a>
+                <a href="/plays/{{ play['id'] }}/">{{ play['full_title'] }}</a>
+                ({{ play['date'] }})
             </li>
 
         {% endfor %}
