@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        {% import 'widgets.html' as widgets %}
+        {{ widgets.style() }}
+    </head>
+    <body>
+        character page {{ characterId }}:
+        <h1>
+              {{ characterName }}
+        </h1>
+        {#
+
+            a list  (by date) of all the plays that the character appears in.
+
+         #}
+
+        makes an appearance in:
+        <ul>
+            {% for play in appearances %}
+                <li>
+                    <a href="/plays/{{ play[0] }}/">{{ play[1] }}</a>
+                    ({{ play[2] }})
+                </li>
+
+            {% endfor %}
+        </ul>
+
+    </body>
+</html>

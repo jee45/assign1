@@ -13,8 +13,12 @@
         <h3>{{ date}}</h3>
 
         <ul> characters:
-        {% for key, charater in characters.items() %}
-            <li>{{ charater['value'] }}</li>
+        {% for key, character in characters.items() %}
+            <li>
+                <a href="/characters/{{key}}">
+                    {{ character['value'] }} -- {{key}}
+                </a>
+            </li>
         {% endfor %}
         </ul>
 
