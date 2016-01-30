@@ -8,6 +8,61 @@
         {{ widgets.style() }}
     </head>
     <body>
-    scene page
+        <h1>
+            title: {{ title }}
+        </h1>
+        <h2>
+            act:  {{ thisActNumber }}
+
+        </h2>
+        <h2>
+            {%   if thereIsAPrevious %}
+                <a href="/plays/{{ id }}/acts/{{ thisActNumber }}/scenes/{{ thisSceneNumber|int - 1 }}"> previous </a>
+            {% endif %}
+                scene:  {{ thisSceneNumber }}
+            {%   if thereIsANext %}
+                <a href="/plays/{{ id }}/acts/{{ thisActNumber }}/scenes/{{ thisSceneNumber|int + 1 }}"> next </a>
+            {% endif %}
+
+        </h2>
+        <div>
+            setting: {{ setting }}
+        </div>
+
+            <ul>
+                {% for blockNumber, block in blocks.items() %}
+                    <li>
+                        block {{ blockNumber }}
+
+
+                        <ul>
+                            {% for blockContentSelector, blockContent in block.items() %}
+                                <li>
+                                     {{ blockContentSelector }}
+                                    <ul>
+                                        {% for key, val in blockContent.items() %}
+                                            {% if blockContentSelector == 'lines' %}
+                                                <li>
+                                                     {{ blockContent[key]['value'] }}
+                                                </li>
+                                            {%  else %}
+                                                <li>
+                                                     {{ blockContent[key] }}
+                                                </li>
+
+                                            {% endif %}
+
+                                        {% endfor %}
+                                    </ul>
+
+                                </li>
+
+
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                {% endfor %}
+            </ul>
     </body>
 </html>
