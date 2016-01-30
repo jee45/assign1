@@ -9,16 +9,49 @@
     <h3>{{ date}}</h3>
 
     <ul> characters:
-    {% for charater in characters %}
-        <li>{{ charater }}</li>
+    {% for key, charater in characters.items() %}
+        <li>{{ charater['value'] }}</li>
     {% endfor %}
     </ul>
 
 {{ id }}
     <ul> acts:
-        {% for act in acts %}
-        <li><a href="/plays/{{ id }}/">{{ act }}</a></li>
-    {% endfor %}
+        {% for actNumber, act in acts.items() %}
+            <li>
+                | {{ actNumber }}
+            </li>
+
+            {% for sceneKey, scenes in act.items() %}
+                <li>
+                    | | {{ sceneKey }}
+
+                </li>
+                {% for sceneNumber, scene in scenes.items() %}
+
+                    <li>
+                        | | | {{ sceneNumber }}
+                    </li>
+
+                    {% for sceneHandle, scenelist in scene.items() %}
+                        <li>
+                            | | | | {{ sceneHandle }}
+                        </li>
+
+                        {% for key, val in scenelist.items() %}
+                            <li>
+                                | | | | | {{ key }}
+                            </li>
+
+
+                        {% endfor %}
+
+                    {% endfor %}
+
+                {% endfor %}
+
+            {% endfor %}
+
+        {% endfor %}
     </ul>
 </body>
 </html>
