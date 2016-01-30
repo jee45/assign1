@@ -1,57 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>{{ title }}</h1>
-    <h3>{{ date}}</h3>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
 
-    <ul> characters:
-    {% for key, charater in characters.items() %}
-        <li>{{ charater['value'] }}</li>
-    {% endfor %}
-    </ul>
+    {% import 'widgets.html' as widgets %}
+    {{ widgets.style() }}
 
-{{ id }}
-    <ul> acts:
-        {% for actNumber, act in acts.items() %}
-            <li>
-                | {{ actNumber }}
-            </li>
+    </head>
+    <body>
+        <h1>{{ title }}</h1>
+        <h3>{{ date}}</h3>
 
-            {% for sceneKey, scenes in act.items() %}
+        <ul> characters:
+        {% for key, charater in characters.items() %}
+            <li>{{ charater['value'] }}</li>
+        {% endfor %}
+        </ul>
+
+    {{ id }}
+        <ul> acts:
+            {% for actNumber, act in acts.items() %}
                 <li>
-                    | | {{ sceneKey }}
+                <ul>
+                    act {{ actNumber }}
 
-                </li>
-                {% for sceneNumber, scene in scenes.items() %}
 
-                    <li>
-                        | | | {{ sceneNumber }}
-                    </li>
+                {% for sceneKey, scenes in act.items() %}
 
-                    {% for sceneHandle, scenelist in scene.items() %}
+                    {% for sceneNumber, scene in scenes.items() %}
+
                         <li>
-                            | | | | {{ sceneHandle }}
+                        <ul>
+                            <a href="/play/{{ id }}/acts/{{ actNumber }}/scenes/{{ sceneNumber }}">
+                            scene {{ sceneNumber }}
+                            </a>
+
+                        {#
+                            {% for sceneHandle, scenelist in scene.items() %}
+
+                                {% if sceneHandle == 'blocks' %}
+
+
+                                    {% for key, val in scenelist.items() %}
+                                        <li>
+
+                                            block {{ key }}
+                                        </li>
+
+                                    {% endfor %}
+                                {% endif %}
+
+                            {% endfor %}
+                        #}
+                        </ul>
                         </li>
-
-                        {% for key, val in scenelist.items() %}
-                            <li>
-                                | | | | | {{ key }}
-                            </li>
-
-
-                        {% endfor %}
 
                     {% endfor %}
 
                 {% endfor %}
+                </ul>
+                </li>
 
             {% endfor %}
-
-        {% endfor %}
-    </ul>
-</body>
+        </ul>
+    </body>
 </html>
