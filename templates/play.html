@@ -16,7 +16,7 @@
         {% for character in characters %}
             <li>
                 <a href="/characters/{{character}}">
-                    {{ characters[character]}} -- {{character}}
+                    {{ characters[character]}}
                 </a>
             </li>
         {% endfor %}
@@ -28,7 +28,8 @@
                 <li>
                 <ul>
                     {% set outerLoopCount =   loop.index-1%}
-                    act {{ outerLoopCount}}
+                    <a href="/plays/{{id}}/acts/{{ outerLoopCount }}">
+                            act {{ outerLoopCount}}</a>
 
                     {% for scenes in act['scenes']  %}
                         <li>

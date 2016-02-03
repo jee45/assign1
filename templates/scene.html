@@ -32,16 +32,12 @@
             <ul>
                 {% for  block in blocks %}
                     <li>
-                        speaker:  <a href="/characters/{{block['speaker']}}">{{ block['speaker']}}</a>
-
+                        speaker:  <a href="/characters/{{block['speaker']}}">{{ characters[block['speaker']]}} </a>
 
                         <ul>
                             {% for  line in block['lines'] %}
                                 <li>
-                                    line:  {{ line}}
-
-
-
+                                    line:  {{line}}
 
                                 </li>
 

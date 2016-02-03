@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        {% import 'widgets.html' as widgets %}
+        {{ widgets.style() }}
+    </head>
+    <body>
+
+        <h1>{{ title }}</h1>
+        <h3>{{ date}}</h3>
+        <h1>act {{actNumber}}</h1>
+
+        <ul> characters in this act:
+        {% for character in charactersList %}
+            <li>
+                <a href="/characters/{{character}}">
+                    {{ characters[character]}}
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+
+        <div>
+            {% for scenes in act['scenes']  %}
+                <li>
+                    <a href="/plays/{{ id }}/acts/{{actNumber}}/scenes/{{loop.index -1}}">scene {{loop.index -1}}</a>
+
+
+
+                </li>
+
+            {% endfor %}
+
+        </div>
+
+
+
+    </body>
+</html>
