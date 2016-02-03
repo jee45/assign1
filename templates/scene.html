@@ -30,36 +30,24 @@
         </div>
 
             <ul>
-                {% for blockNumber, block in blocks.items() %}
+                {% for  block in blocks %}
                     <li>
-                        block {{ blockNumber }}
+                        speaker:  <a href="/characters/{{block['speaker']}}">{{ block['speaker']}}</a>
 
 
                         <ul>
-                            {% for blockContentSelector, blockContent in block.items() %}
+                            {% for  line in block['lines'] %}
                                 <li>
-                                     {{ blockContentSelector }}
-                                    <ul>
-                                        {% for key, val in blockContent.items() %}
-                                            {% if blockContentSelector == 'lines' %}
-                                                <li>
-                                                     {{ blockContent[key]['value'] }}
-                                                </li>
-                                            {%  else %}
-                                                <li>
-                                                     <a href="/characters/{{blockContent[key]}}"> {{ blockContent[key] }} </a>
-                                                </li>
+                                    line:  {{ line}}
 
-                                            {% endif %}
 
-                                        {% endfor %}
-                                    </ul>
+
 
                                 </li>
 
-
                             {% endfor %}
                         </ul>
+
                     </li>
 
                 {% endfor %}
