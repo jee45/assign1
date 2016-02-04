@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+{% import 'widgets.html' as widgets %}
+{{ widgets.style() }}
+
+</head>
+<body>
+
+    ‘Plays of Shakespeare’
+
+    <ul>
+        {% for play in plays|sort(attribute='date') %}
+            <li>
+                <a href="/plays/{{ play['id'] }}/">{{ play['full_title'] }}</a>
+                ({{ play['date'] }})
+            </li>
+
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

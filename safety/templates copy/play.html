@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+    {% import 'widgets.html' as widgets %}
+    {{ widgets.style() }}
+
+    </head>
+    <body>
+        <h1>{{ title }}</h1>
+        <h3>{{ date}}</h3>
+
+        <ul> characters:
+        {% for key, character in characters.items() %}
+            <li>
+                <a href="/characters/{{key}}">
+                    {{ character['value'] }} -- {{key}}
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+
+    {{ id }}
+        <ul> acts:
+            {% for actNumber, act in acts.items()  %}
+                <li>
+                <ul>
+                    act {{ actNumber }}
+
+
+                {% for sceneKey, scenes in act.items() %}
+
+                    {% for sceneNumber, scene in scenes.items()  %}
+
+                        <li>
+                        <ul>
+                            <a href="/plays/{{ id }}/acts/{{ actNumber }}/scenes/{{ sceneNumber }}">
+                            scene {{ sceneNumber }}
+                            </a>
+
+                        {#
+                            {% for sceneHandle, scenelist in scene.items() %}
+
+                                {% if sceneHandle == 'blocks' %}
+
+
+                                    {% for key, val in scenelist.items() %}
+                                        <li>
+
+                                            block {{ key }}
+                                        </li>
+
+                                    {% endfor %}
+                                {% endif %}
+
+                            {% endfor %}
+                        #}
+                        </ul>
+                        </li>
+
+                    {% endfor %}
+
+                {% endfor %}
+                </ul>
+                </li>
+
+            {% endfor %}
+        </ul>
+    </body>
+</html>
